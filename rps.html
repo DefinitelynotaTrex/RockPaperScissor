@@ -1,0 +1,420 @@
+<html>
+<head>
+<style>
+#rock{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted black;
+width: 90px;
+height: 90px;
+left: 70px;
+top: 230px;
+}
+#paper{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted black;
+width: 90px;
+height: 90px;
+left: 70px;
+top: 350px;
+}
+#scissor{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted black;
+width: 90px;
+height: 90px;
+left: 70px;
+top: 470px;
+}
+#erock{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted black;
+width: 90px;
+height: 90px;
+left: 1150px;
+top: 230px;
+}
+#epaper{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted black;
+width: 90px;
+height: 90px;
+left: 1150px;
+top: 350px;
+}
+#escissor{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted black;
+width: 90px;
+height: 90px;
+left: 1150px;
+top: 470px;
+}
+#scores{
+font-size: 50px;
+color: B4CDED;
+}
+#Scoredisplay{
+position: absolute;
+top: 40px;
+left: 600px;
+}
+#gamearea{
+background: #344966;
+position: relative;
+height: 800px;
+width: 1340px;
+align: center;
+display: none;
+}
+#Picon{
+position: absolute;
+width: 150px;
+height 150px;
+border-radius: 50%;
+border: 2px dotted #0D1821;
+background: #B4CDED;
+top: 20px;
+left: 50px;
+}
+#Bicon{
+position: absolute;
+width: 150px;
+height 150px;
+border-radius: 50%;
+border: 2px dotted #BFCC94;
+background: #F0F4EF;
+top: 20px;
+left: 1130px;
+}
+#rexbot{
+position: absolute;
+top: 90px;
+left: 980px;
+}
+#player{
+position: absolute;
+top: 90px;
+left: 230px;
+}
+#mainmenu{
+background: #344966;
+position: relative;
+height: 800px;
+width: 1340px;
+align: center;
+}
+#strts{
+position: absolute;
+top: 300px;
+left: 450px;
+}
+#ttle{
+position: absolute;
+top: 100px;
+left: 250px;
+}
+#pwrd{
+position: absolute;
+top: 730px;
+left: 100px;
+}
+#rexbt{
+position: absolute;
+border-radius: 50%;
+border: 2px dotted #BFCC94;
+background: #F0F4EF;
+width: 80px;
+height: 80px;
+top: 700px;
+left: 10px;
+}
+#notify{
+position: absolute;
+top: 400px;
+left: 580px;
+display: none;
+}
+#rfresh{
+position: absolute;
+width: 50px;
+height: 50px;
+top: 20px;
+left: 620px;
+}
+</style>
+</head>
+<body>
+<!-- Start of the game -->
+<div id = "gamearea">
+<img id = "rfresh" src ="https://image.flaticon.com/icons/png/512/61/61444.png" onclick ="restart()"><img>
+<img src ="http://clipart-library.com/images/8TG68Lp7c.png" id ="Picon"><img>
+<img src = "https://fontmeme.com/permalink/200529/980c7a286f1b823c3ac2134766f47c64.png" id ="rexbot"></img>
+<img src ="https://fontmeme.com/permalink/200529/c195eb43aef9ff33c5431887821087f1.png" id ="player"></img>
+<img id ="notify" src ="https://fontmeme.com/permalink/200529/8fa356bb80d8739382696ae86801b105.png"></img>
+<img src ="rex.jpg" id ="Bicon"></img>
+<img src = "rock.png" id="rock"></img>
+<img src = "paper.png" id="paper"></img>
+<img src = "scissor.png" id="scissor"></img>
+<img src = "rock.png" id="erock"></img>
+<img src = "paper.png" id="epaper"></img>
+<img src = "scissor.png" id="escissor"></img>
+<div id ="Scoredisplay">
+<p id="scores" ><span id ="Myscore">0</span> | <span id="enemscore"> 0</span><p>
+</div>
+</div>
+<!-- Game menu end -->
+<script>
+//start//
+function strt(){
+mainmenu.style.display = "none";
+gamearea.style.display = "block";
+}
+//start end//
+//win animations//
+var pcon = document.getElementById("Picon");
+var bcon = document.getElementById("Bicon");
+function playerwin(){
+pcon.style.top = 200 + "px";
+pcon.style.left = 570 + "px";
+notify.style.display = "inline";
+}
+function enemywin(){
+bcon.style.top = 200 + "px";
+bcon.style.left = 570 + "px";
+notify.style.display = "inline";
+}
+//win animations end//
+//hover animations start//
+document.getElementById("rock").addEventListener("mouseout", rockexit);
+document.getElementById("paper").addEventListener("mouseout", paperexit);
+document.getElementById("scissor").addEventListener("mouseout", scissorexit);
+document.getElementById("rock").addEventListener("mouseenter", rockhover);
+document.getElementById("paper").addEventListener("mouseenter", paperhover);
+document.getElementById("scissor").addEventListener("mouseenter", scissorhover);
+var hpos = 70;
+function rockhover(){
+hpos += 20;
+rock.style.left = hpos + "px";
+}
+function rockexit(){
+hpos -= 20;
+rock.style.left = hpos + "px";
+}
+function paperhover(){
+hpos += 20;
+paper.style.left = hpos + "px";
+}
+function paperexit(){
+hpos -= 20;
+paper.style.left = hpos + "px";
+}
+function scissorhover(){
+hpos += 20;
+scissor.style.left = hpos + "px";
+}
+function scissorexit(){
+hpos -= 20;
+scissor.style.left = hpos + "px";
+}
+//Hover Animation end//
+//Select Animation//
+var npos = 70;
+document.getElementById("rock").addEventListener("click", rockselect);
+document.getElementById("paper").addEventListener("click", paperselect);
+document.getElementById("scissor").addEventListener("click", scissorselect);
+function rockselect(){
+rck();
+npos += 400;
+rock.style.left = npos + "px";
+rock.style.top = 350 + "px";
+document.getElementById("rock").removeEventListener("mouseout", rockexit);
+document.getElementById("rock").removeEventListener("mouseenter", rockhover);
+document.getElementById("scissor").removeEventListener("mouseout", scissorexit);
+document.getElementById("scissor").removeEventListener("mouseenter", scissorhover);
+document.getElementById("paper").removeEventListener("mouseout", paperexit);
+document.getElementById("paper").removeEventListener("mouseenter", paperhover)
+document.getElementById("rock").removeEventListener("click", rockselect);
+document.getElementById("paper").removeEventListener("click", paperselect);
+document.getElementById("scissor").removeEventListener("click", scissorselect);
+setTimeout(next, 100);
+}
+function paperselect(){
+ppr();
+npos += 400;
+paper.style.left = npos + "px";
+document.getElementById("paper").removeEventListener("mouseout", paperexit);
+document.getElementById("paper").removeEventListener("mouseenter", paperhover);
+document.getElementById("scissor").removeEventListener("mouseout", scissorexit);
+document.getElementById("scissor").removeEventListener("mouseenter", scissorhover);
+document.getElementById("rock").removeEventListener("mouseout", rockexit);
+document.getElementById("rock").removeEventListener("mouseenter", rockhover);
+document.getElementById("rock").removeEventListener("click", rockselect);
+document.getElementById("paper").removeEventListener("click", paperselect);
+document.getElementById("scissor").removeEventListener("click", scissorselect);
+setTimeout(next, 100);
+}
+function scissorselect(){
+scssr();
+npos += 400;
+scissor.style.left = npos + "px";
+scissor.style.top = 350 + "px";
+document.getElementById("scissor").removeEventListener("mouseout", scissorexit);
+document.getElementById("scissor").removeEventListener("mouseenter", scissorhover);
+document.getElementById("rock").removeEventListener("mouseout", rockexit);
+document.getElementById("rock").removeEventListener("mouseenter", rockhover);
+document.getElementById("paper").removeEventListener("mouseout", paperexit);
+document.getElementById("paper").removeEventListener("mouseenter", paperhover)
+document.getElementById("rock").removeEventListener("click", rockselect);
+document.getElementById("paper").removeEventListener("click", paperselect);
+document.getElementById("scissor").removeEventListener("click", scissorselect);
+setTimeout(next, 100);
+}
+//select animation end//
+//RexBot move//
+var epos = 1150;
+function enemyrock(){
+epos -= 430;
+erock.style.left = epos + "px";
+erock.style.top = 350 + "px";
+}
+function enemypaper(){
+epos -= 430;
+epaper.style.left = epos + "px";
+epaper.style.top = 350 + "px";
+}
+function enemyscissor(){
+epos -= 430;
+escissor.style.left = epos + "px";
+escissor.style.top = 350 + "px";
+}
+//RexBot move end//
+//Game mechanics//
+var Pchoice;
+var Pscore = 0;
+var Fscore = 0;
+var M = document.getElementById("Myscore");
+var F = document.getElementById("enemscore");
+function rck(){
+Pchoice = "rock";
+}
+function ppr(){
+Pchoice = "paper";
+}
+function scssr(){
+Pchoice = "scissor";;
+}
+function next(){
+if(Pscore ==  5){
+playerwin();
+Pscore = 0;
+Fscore = 0;
+M.innerHTML = Pscore;
+F.innerHTML = Fscore;
+}else if(Fscore == 5){
+enemywin();
+Pscore = 0;
+Fscore = 0;
+M.innerHTML = Pscore;
+F.innerHTML = Fscore;
+}
+var rng = Math.round((Math.random()*3)+1);
+if(rng == 1 && Pchoice == "rock"){
+enemyrock();
+setTimeout(restart, 2000);
+}
+if(rng == 2 && Pchoice == "rock"){
+enemypaper();
+enemywin();
+Fscore += 1;
+F.innerHTML = Fscore;
+setTimeout(restart, 2000);
+}
+if(rng == 3 && Pchoice == "rock"){
+enemyscissor();
+playerwin();
+Pscore += 1;
+M.innerHTML = Pscore;
+setTimeout(restart, 2000);
+}
+if(rng == 1 && Pchoice == "scissor"){
+enemyrock();
+enemywin();
+Fscore += 1;
+F.innerHTML = Fscore;
+setTimeout(restart, 2000);
+}
+if(rng == 2 && Pchoice == "scissor"){
+enemypaper();
+playerwin();
+Pscore += 1;
+M.innerHTML = Pscore;
+setTimeout(restart, 2000);
+}
+if(rng == 3 && Pchoice == "scissor"){
+enemyscissor();
+setTimeout(restart, 2000);
+}
+if(rng == 1 && Pchoice == "paper"){
+enemyrock();
+playerwin();
+Pscore += 1;
+M.innerHTML = Pscore;
+setTimeout(restart, 2000);
+}
+if(rng == 2 && Pchoice == "paper"){
+enemypaper();
+setTimeout(restart, 2000);
+}
+if(rng == 3 && Pchoice == "paper"){
+enemyscissor();
+enemywin();
+Fscore += 1;
+F.innerHTML = Fscore;
+setTimeout(restart, 2000);
+}
+}
+function restart(){
+hpos = 70;
+npos = 70;
+epos = 1150;
+rock.style.left = 70 + "px";
+rock.style.top = 230 + "px";
+paper.style.left = 70 + "px";
+scissor.style.left = 70 + "px";
+scissor.style.top = 470 + "px";
+erock.style.left = 1150 + "px";
+erock.style.top = 230 + "px";
+epaper.style.left = 1150 + "px";
+escissor.style.left = 1150 + "px";
+escissor.style.top = 470 + "px";
+pcon.style.top = 20 + "px";
+pcon.style.left = 50 + "px";
+bcon.style.top = 20 + "px";
+bcon.style.left = 1130 + "px";
+notify.src = "https://fontmeme.com/permalink/200529/8fa356bb80d8739382696ae86801b105.png";
+notify.style.display = "none";
+document.getElementById("rock").addEventListener("click", rockselect);
+document.getElementById("paper").addEventListener("click", paperselect);
+document.getElementById("scissor").addEventListener("click", scissorselect);
+document.getElementById("rock").addEventListener("mouseout", rockexit);
+document.getElementById("paper").addEventListener("mouseout", paperexit);
+document.getElementById("scissor").addEventListener("mouseout", scissorexit);
+document.getElementById("rock").addEventListener("mouseenter", rockhover);
+document.getElementById("paper").addEventListener("mouseenter", paperhover);
+document.getElementById("scissor").addEventListener("mouseenter", scissorhover);
+}
+</script>
+<div id ="mainmenu">
+<img id ="ttle" src ="https://fontmeme.com/permalink/200529/dbe8ad4712462cfb6a597095c4d25fcf.png"></img>
+<img id ="strts" onclick = "strt()" src ="https://fontmeme.com/permalink/200529/5ba2d0fa0336b65f9bd3822a57887ef5.png"></img>
+<img id ="pwrd" src = "https://fontmeme.com/permalink/200529/02e51f1bb85737acfe2d92be03b05815.png"></img>
+<img src = "rex.jpg" id ="rexbt"></img>
+</div>
+</body>
+</html>
